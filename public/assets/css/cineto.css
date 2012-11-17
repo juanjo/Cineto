@@ -1,0 +1,15 @@
+body {
+}
+
+
+.torrent {
+  margin-bottom: 10px;
+}
+
+.torrent h6 {
+  margin-top: 0;
+}
+
+.torrent .progress {
+  margin-bottom: 0;
+}

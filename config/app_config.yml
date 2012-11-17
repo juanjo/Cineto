@@ -1,5 +1,6 @@
 development:
   domain: localhost:3000
+  downloads_path: "/Users/fguillen/Downloads"
   torrent_api: http://localhost:9091/transmission/rpc
 
 test:

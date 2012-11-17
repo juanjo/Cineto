@@ -1,7 +1,6 @@
-<%= form_tag torrents_path do %>
-  <p>
-    <%= label_tag :torrent_uri %><br />
-    <%= text_field_tag :torrent_uri %>
-  </p>
-  <p><%= submit_tag %></p>
+<%= form_tag torrents_path, :class =>  "form-inline" do %>
+  <%= text_field_tag :torrent_uri, nil, :placeholder => "Torrent URL", :class => "span9" %>
+  <%= submit_tag "Start download", :class => "btn btn-primary span3" %>
+  <br />
+  <%= link_to "Legal torrents", "http://www.clearbits.net", :target => "_blank" %>
 <% end %>

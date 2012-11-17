@@ -1,30 +1,49 @@
 <% title "Torrents" %>
 
-<table>
-  <tr>
-    <th>id</th>
-    <th>addedDate</th>
-    <th>isFinished</th>
-    <th>name</th>
-    <th>percentDone</th>
-    <th>rateDownload</th>
-    <th>rateUpload</th>
-    <th>totalSize</th>
-  </tr>
-  <% @torrents.each do |torrent| %>
-    <tr>
-      <td><%= torrent.id %></td>
-      <td><%= torrent.addedDate %></td>
-      <td><%= torrent.isFinished %></td>
-      <td><%= torrent.name %></td>
-      <td><%= torrent.percentDone %></td>
-      <td><%= torrent.rateDownload %></td>
-      <td><%= torrent.rateUpload %></td>
-      <td><%= torrent.totalSize %></td>
-      <td><%= link_to "Show", torrent_path(torrent.id) %></td>
-      <td><%= link_to "Destroy", torrent_path(torrent.id), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<%= render 'form' %>
 
-<p><%= link_to "New Torrent", new_torrent_path %></p>
+
+<div class="row-fluid">
+    <% @torrents.each do |torrent| %>
+        <div class="thumbnail torrent">
+          <div class="caption">
+            <h3>
+              <%= torrent.name %>
+              <%= link_to "Destroy", torrent_path(torrent.id), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger" %>
+            </h3>
+            <div class="progress">
+              <div class="bar bar-warning" style="width: <%= torrent.percentDone * 100 %>%;"></div>
+            </div>
+            <h6>
+              <%= torrent_stats torrent %>
+            </h6>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th class="span7">Filename</th>
+                  <th class="span3">State</th>
+                  <th class="span2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% torrent.files.each do |file| %>
+                  <tr>
+                    <td><%= file.name %></td>
+                    <td><%= torrent_file_stats(file) %></td>
+                    <td>
+                      <% if torrent_file_downloaded(file) %>
+                        <%= link_to "dowload", download_torrents_path( :filename => file.name ), :class => "btn btn-mini" %>
+                      <% else %>
+                        <%= link_to "dowload", "#", :class => "btn btn-mini disabled", :disabled => "disabled" %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    <% end %>
+</div>
+
+

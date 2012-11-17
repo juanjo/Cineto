@@ -1,4 +1,4 @@
-FIELDS = [ "id", "name", "totalSize", "addedDate", "isFinished", "rateDownload", "rateUpload", "percentDone" ]
+FIELDS = [ "id", "name", "totalSize", "addedDate", "isFinished", "rateDownload", "rateUpload", "percentDone", "files" ]
 
 class TorrentApi
   def self.client
@@ -10,121 +10,86 @@ class TorrentApi::Client
   def initialize(api_url)
     puts "XXX: api_url: #{api_url}"
     @api_url = api_url
-    @session_id = get_session_id
+    @session_id = "unknown"
   end
 
   def all
     puts "XXX: get_torrents"
+
     response =
-      HTTParty.post(
-        @api_url,
-        :body =>
-          {
-            :method => "torrent-get",
-            :arguments => {
-              :fields => FIELDS
-            }
-          }.to_json,
-        :headers => { "x-transmission-session-id" => @session_id }
+      post(
+        :method => "torrent-get",
+        :arguments => {
+          :fields => FIELDS
+        }
       )
-    puts "XXX: response: #{response}"
 
-    puts "XXX: response[arguments][torrents]: #{response["arguments"]["torrents"]}"
-
-    response_struct = RecursiveOpenStruct.new( response["arguments"], :recurse_over_arrays => true ).torrents
-
-
-
-    puts "XXX: response_struct: #{response_struct}"
-    puts "XXX: response_struct: #{response_struct.first}"
-
-    puts "XXX:"
-    puts "XXX: keys: #{response_struct.first.keys} "
-
-    response_struct
+    RecursiveOpenStruct.new( response["arguments"], :recurse_over_arrays => true ).torrents
   end
 
   def find(id)
     puts "XXX: get_torrent: #{id}"
     response =
-      HTTParty.post(
-        @api_url,
-        :body =>
-          {
-            :method => "torrent-get",
-            :arguments => {
-              :fields => FIELDS,
-              :ids => [id]
-            }
-          }.to_json,
-        :headers => { "x-transmission-session-id" => @session_id }
+      post(
+        :method => "torrent-get",
+        :arguments => {
+          :fields => FIELDS,
+          :ids => [id]
+        }
       )
 
-    puts "XXX: response: #{response}"
-
-    response_struct = RecursiveOpenStruct.new( response["arguments"], :recurse_over_arrays => true ).torrents.first
-  end
-
-  def get_session_id
-    puts "XXX: get_session_id: #{@api_url}"
-    response = HTTParty.get(@api_url)
-    result = response.headers["x-transmission-session-id"]
-    puts "XXX: session_id: #{result}"
-    result
+    RecursiveOpenStruct.new( response["arguments"], :recurse_over_arrays => true ).torrents.first
   end
 
   def create(filename)
     puts "XXX: add_torrent: #{filename}"
 
     response =
-      HTTParty.post(
-        @api_url,
-        :body =>
-          {
-            :method => "torrent-add",
-            :arguments => {
-              :filename => filename,
-              :pause => true
-            }
-          }.to_json,
-        :headers => { "x-transmission-session-id" => @session_id }
+      post(
+        :method => "torrent-add",
+        :arguments => {
+          :filename => filename,
+          :pause => true
+        }
       )
 
-    puts "XXX: response: #{response}"
-
-    puts "XXX: response[arguments][torrent_added]: #{response["arguments"]["torrent-added"]}"
-
-    response_struct = RecursiveOpenStruct.new( response["arguments"]["torrent-added"] )
-    puts "XXX: response_struct: #{response_struct.id}"
-
-    response_struct
+    RecursiveOpenStruct.new( response["arguments"]["torrent-added"] )
   end
 
   def destroy(id)
     puts "XXX: remove_torrent: #{id}"
 
     response =
+      post(
+        :method => "torrent-remove",
+        :arguments => {
+          :ids => [id],
+          :"delete-local-data" => true
+        }
+      )
+
+    RecursiveOpenStruct.new( response["arguments"]["torrent-added"] )
+  end
+
+  def post(opts)
+    response =
       HTTParty.post(
         @api_url,
-        :body =>
-          {
-            :method => "torrent-remove",
-            :arguments => {
-              :ids => [id],
-              :"delete-local-data" => true
-            }
-          }.to_json,
+        :body => opts.to_json,
         :headers => { "x-transmission-session-id" => @session_id }
       )
 
-    puts "XXX: response: #{response}"
+    puts "XXX: response.body: #{response.body}"
+    puts "XXX: response.code: #{response.code}"
+    puts "XXX: response.message: #{response.message}"
+    puts "XXX: response.headers: #{response.headers.inspect}"
 
-    puts "XXX: response[arguments][torrent_added]: #{response["arguments"]["torrent-added"]}"
+    if( response.code == 409 )
+      @session_id = response.headers["x-transmission-session-id"]
+      response = post(opts)
+    end
 
-    response_struct = RecursiveOpenStruct.new( response["arguments"]["torrent-added"] )
-    puts "XXX: response_struct: #{response_struct.id}"
-
-    response_struct
+    response
   end
 end
 
