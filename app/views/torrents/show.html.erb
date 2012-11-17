@@ -1,0 +1,36 @@
+<% title "Torrent" %>
+
+<p>
+  <strong>Torrent:</strong>
+  <%= @torrent.torrent_id %>
+</p>
+<p>
+  <strong>Added At:</strong>
+  <%= @torrent.added_at %>
+</p>
+<p>
+  <strong>Is Finished:</strong>
+  <%= @torrent.is_finished %>
+</p>
+<p>
+  <strong>Namd:</strong>
+  <%= @torrent.namd %>
+</p>
+<p>
+  <strong>Download Rate:</strong>
+  <%= @torrent.download_rate %>
+</p>
+<p>
+  <strong>Size:</strong>
+  <%= @torrent.size %>
+</p>
+<p>
+  <strong>Percent Done:</strong>
+  <%= @torrent.percent_done %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_torrent_path(@torrent) %> |
+  <%= link_to "Destroy", @torrent, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", torrents_path %>
+</p>

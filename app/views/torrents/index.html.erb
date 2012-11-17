@@ -1,0 +1,29 @@
+<% title "Torrents" %>
+
+<table>
+  <tr>
+    <th>Torrent</th>
+    <th>Added At</th>
+    <th>Is Finished</th>
+    <th>Namd</th>
+    <th>Download Rate</th>
+    <th>Size</th>
+    <th>Percent Done</th>
+  </tr>
+  <% for torrent in @torrents %>
+    <tr>
+      <td><%= torrent.torrent_id %></td>
+      <td><%= torrent.added_at %></td>
+      <td><%= torrent.is_finished %></td>
+      <td><%= torrent.namd %></td>
+      <td><%= torrent.download_rate %></td>
+      <td><%= torrent.size %></td>
+      <td><%= torrent.percent_done %></td>
+      <td><%= link_to "Show", torrent %></td>
+      <td><%= link_to "Edit", edit_torrent_path(torrent) %></td>
+      <td><%= link_to "Destroy", torrent, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Torrent", new_torrent_path %></p>

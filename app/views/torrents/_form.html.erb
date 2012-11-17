@@ -1,0 +1,32 @@
+<%= form_for @torrent do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :torrent_id %><br />
+    <%= f.number_field :torrent_id %>
+  </p>
+  <p>
+    <%= f.label :added_at %><br />
+    <%= f.datetime_select :added_at %>
+  </p>
+  <p>
+    <%= f.label :is_finished %><br />
+    <%= f.check_box :is_finished %>
+  </p>
+  <p>
+    <%= f.label :namd %><br />
+    <%= f.text_field :namd %>
+  </p>
+  <p>
+    <%= f.label :download_rate %><br />
+    <%= f.text_field :download_rate %>
+  </p>
+  <p>
+    <%= f.label :size %><br />
+    <%= f.number_field :size %>
+  </p>
+  <p>
+    <%= f.label :percent_done %><br />
+    <%= f.text_field :percent_done %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
