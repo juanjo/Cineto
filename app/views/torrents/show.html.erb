@@ -1,36 +1,39 @@
 <% title "Torrent" %>
 
 <p>
-  <strong>Torrent:</strong>
-  <%= @torrent.torrent_id %>
+  <strong>id:</strong>
+  <%= @torrent.id %>
 </p>
 <p>
-  <strong>Added At:</strong>
-  <%= @torrent.added_at %>
+  <strong>addedDate:</strong>
+  <%= @torrent.addedDate %>
 </p>
 <p>
-  <strong>Is Finished:</strong>
-  <%= @torrent.is_finished %>
+  <strong>isFinished:</strong>
+  <%= @torrent.isFinished %>
 </p>
 <p>
-  <strong>Namd:</strong>
-  <%= @torrent.namd %>
+  <strong>name:</strong>
+  <%= @torrent.name %>
 </p>
 <p>
-  <strong>Download Rate:</strong>
-  <%= @torrent.download_rate %>
+  <strong>percentDone:</strong>
+  <%= @torrent.percentDone %>
 </p>
 <p>
-  <strong>Size:</strong>
-  <%= @torrent.size %>
+  <strong>rateDownload:</strong>
+  <%= @torrent.rateDownload %>
 </p>
 <p>
-  <strong>Percent Done:</strong>
-  <%= @torrent.percent_done %>
+  <strong>rateUpload:</strong>
+  <%= @torrent.rateUpload %>
+</p>
+<p>
+  <strong>totalSize:</strong>
+  <%= @torrent.totalSize %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_torrent_path(@torrent) %> |
-  <%= link_to "Destroy", @torrent, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Destroy", torrent_path(@torrent.id), :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", torrents_path %>
 </p>

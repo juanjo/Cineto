@@ -1,8 +1,11 @@
 development:
   domain: localhost:3000
+  torrent_api: http://localhost:9091/transmission/rpc
 
 test:
   domain: test.host
+  torrent_api: http://test.com/transmission/rpc
 
 production:
   domain: example.com
+  torrent_api: http://localhost:9091/transmission/rpc

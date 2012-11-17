@@ -1,41 +1,22 @@
 class TorrentsController < ApplicationController
   def index
-    @torrents = Torrent.all
+    @torrents = TorrentApi.client.all
   end
 
   def show
-    @torrent = Torrent.find(params[:id])
+    @torrent = TorrentApi.client.find(params[:id].to_i)
   end
 
   def new
-    @torrent = Torrent.new
   end
 
   def create
-    @torrent = Torrent.new(params[:torrent])
-    if @torrent.save
-      redirect_to @torrent, :notice => "Successfully created torrent."
-    else
-      render :action => 'new'
-    end
-  end
-
-  def edit
-    @torrent = Torrent.find(params[:id])
-  end
-
-  def update
-    @torrent = Torrent.find(params[:id])
-    if @torrent.update_attributes(params[:torrent])
-      redirect_to @torrent, :notice  => "Successfully updated torrent."
-    else
-      render :action => 'edit'
-    end
+    torrent = TorrentApi.client.create(params[:torrent_uri])
+    redirect_to torrent_path(torrent.id), :notice => "Successfully created torrent."
   end
 
   def destroy
-    @torrent = Torrent.find(params[:id])
-    @torrent.destroy
+    @torrent = TorrentApi.client.destroy(params[:id].to_i)
     redirect_to torrents_url, :notice => "Successfully destroyed torrent."
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117113147) do
+ActiveRecord::Schema.define(:version => 20121117113021) do
 
   create_table "torrents", :force => true do |t|
     t.integer  "torrent_id",                       :null => false
@@ -23,15 +23,6 @@ ActiveRecord::Schema.define(:version => 20121117113147) do
     t.decimal  "percent_done",  :default => 0.0
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
 end

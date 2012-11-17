@@ -1,3 +1,11 @@
 class Torrent < ActiveRecord::Base
-  attr_accessible :torrent_id, :added_at, :is_finished, :namd, :download_rate, :size, :percent_done
+  attr_protected nil
+
+  def self.create_torrent(uri)
+    id = TorrentApi.client.add_torrent(uri)
+
+    Torrent.create!(
+      :external_id => id
+    )
+  end
 end

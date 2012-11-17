@@ -8,6 +8,7 @@ class CreateTorrents < ActiveRecord::Migration
       t.decimal :download_rate, :default => 0
       t.integer :size, :null => false
       t.decimal :percent_done, :default => 0
+      t.string :uri, :null => false
       t.timestamps
     end
   end

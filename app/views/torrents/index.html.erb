@@ -2,26 +2,27 @@
 
 <table>
   <tr>
-    <th>Torrent</th>
-    <th>Added At</th>
-    <th>Is Finished</th>
-    <th>Namd</th>
-    <th>Download Rate</th>
-    <th>Size</th>
-    <th>Percent Done</th>
+    <th>id</th>
+    <th>addedDate</th>
+    <th>isFinished</th>
+    <th>name</th>
+    <th>percentDone</th>
+    <th>rateDownload</th>
+    <th>rateUpload</th>
+    <th>totalSize</th>
   </tr>
-  <% for torrent in @torrents %>
+  <% @torrents.each do |torrent| %>
     <tr>
-      <td><%= torrent.torrent_id %></td>
-      <td><%= torrent.added_at %></td>
-      <td><%= torrent.is_finished %></td>
-      <td><%= torrent.namd %></td>
-      <td><%= torrent.download_rate %></td>
-      <td><%= torrent.size %></td>
-      <td><%= torrent.percent_done %></td>
-      <td><%= link_to "Show", torrent %></td>
-      <td><%= link_to "Edit", edit_torrent_path(torrent) %></td>
-      <td><%= link_to "Destroy", torrent, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= torrent.id %></td>
+      <td><%= torrent.addedDate %></td>
+      <td><%= torrent.isFinished %></td>
+      <td><%= torrent.name %></td>
+      <td><%= torrent.percentDone %></td>
+      <td><%= torrent.rateDownload %></td>
+      <td><%= torrent.rateUpload %></td>
+      <td><%= torrent.totalSize %></td>
+      <td><%= link_to "Show", torrent_path(torrent.id) %></td>
+      <td><%= link_to "Destroy", torrent_path(torrent.id), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
