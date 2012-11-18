@@ -4,8 +4,7 @@ gem "rails", "3.2.8"
 gem "sqlite3"
 gem "json"
 gem "jquery-rails"
-gem "httparty"
-gem "recursive-open-struct", "0.3.1", :git => "git://github.com/aetherknight/recursive-open-struct.git"
+gem "transmission_api", :path => "/Users/fguillen/Develop/Ruby/TransmissionApi"
 
 group :development do
   gem "nifty-generators"

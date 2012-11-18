@@ -1,0 +1,91 @@
+[
+  {
+    "addedDate":1353173924,
+    "files":[
+      {
+        "bytesCompleted":0,
+        "length":6725133,
+        "name":"w4yr - e/w4yr - 06 - Home.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":5878609,
+        "name":"w4yr - e/w4yr - 02 - Analog Signal.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":5538809,
+        "name":"w4yr - e/w4yr - 03 - Pathfinder.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":5530938,
+        "name":"w4yr - e/w4yr - 05 - Reverse Engineering.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":5353197,
+        "name":"w4yr - e/w4yr - 01 - Mechanical Thinking.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":3240336,
+        "name":"w4yr - e/w4yr - 04 - Old Story.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":2883579,
+        "name":"w4yr - e/w4yr - 09 - Augmented Reality.mp3"
+      },
+      {
+        "bytesCompleted":0,
+        "length":2627581,
+        "name":"w4yr - e/w4yr - 07 - City of the Future.mp3"
+      },
+      {
+        "bytesCompleted":13450,
+        "length":2212228,
+        "name":"w4yr - e/w4yr - 08 - Copper Cobweb.mp3"
+      },
+      {
+        "bytesCompleted":52086,
+        "length":2003254,
+        "name":"w4yr - e/w4yr - 10 - Racing on the Moon.mp3"
+      },
+      {
+        "bytesCompleted":18994,
+        "length":558194,
+        "name":"w4yr - e/Album_Cover_117.jpg"
+      },
+      {
+        "bytesCompleted":5205,
+        "length":5205,
+        "name":"w4yr - e/DC117.nfo"
+      }
+    ],
+    "id":2,
+    "isFinished":false,
+    "name":"w4yr - e",
+    "percentDone":0.0021,
+    "rateDownload":0,
+    "rateUpload":0,
+    "totalSize":42557063
+  },
+  {
+    "addedDate":1352897370,
+    "files":[
+      {
+        "bytesCompleted":8617984,
+        "length":800063488,
+        "name":"ubuntu-12.10-desktop-amd64.iso"
+      }
+    ],
+    "id":3,
+    "isFinished":false,
+    "name":"ubuntu-12.10-desktop-amd64.iso",
+    "percentDone":0.0107,
+    "rateDownload":0,
+    "rateUpload":0,
+    "totalSize":800063488
+  }
+]

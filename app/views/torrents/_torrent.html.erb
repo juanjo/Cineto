@@ -1,0 +1,38 @@
+<div class="thumbnail torrent">
+  <div class="caption">
+    <h3>
+      <%= torrent.name %>
+      <%= link_to "Destroy", torrent_path(torrent.torrent_id), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger" %>
+    </h3>
+    <div class="progress">
+      <div class="bar bar-warning" style="width: <%= torrent.percent_done %>%;"></div>
+    </div>
+    <h6>
+      <%= torrent_stats torrent %>
+    </h6>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th class="span7">Filename</th>
+          <th class="span3">State</th>
+          <th class="span2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% torrent.files.each do |file| %>
+          <tr>
+            <td><%= file.name %></td>
+            <td><%= torrent_file_stats(file) %></td>
+            <td>
+              <% if torrent_file_downloaded(file) %>
+                <%= link_to "dowload", download_torrents_path( :filename => file.name ), :class => "btn btn-mini" %>
+              <% else %>
+                <%= link_to "dowload", "#", :class => "btn btn-mini disabled", :disabled => "disabled" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
