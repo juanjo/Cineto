@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/fguillen/Develop/Ruby/TransmissionApi
+GIT
+  remote: git://github.com/fguillen/TransmissionApi.git
+  revision: dafd3981f39506504fa420112962921db653bbfa
   specs:
     transmission_api (0.0.1)
       httparty (= 0.9.0)
