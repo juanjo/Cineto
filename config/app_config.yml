@@ -16,5 +16,5 @@ production:
   downloads_path: "/Users/fguillen/Downloads"
   transmission_api_url: http://localhost:9091/transmission/rpc
   transmission_auth:
-    username: "username"
-    password: "password"
+    username: "trans"
+    password: "10f192f4fff764230a0c06ed3b05610d"
