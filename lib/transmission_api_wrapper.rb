@@ -16,9 +16,9 @@ module TransmissionApiWrapper
   def self.client
     @client ||=
       TransmissionApi.new(
-        :username => "username",
-        :password => "password",
-        :url      => "http://127.0.0.1:9091/transmission/rpc",
+        :username => APP_CONFIG[:transmission_auth]["username"],
+        :password => APP_CONFIG[:transmission_auth]["username"],
+        :url      => APP_CONFIG[:transmission_api_url],
         :fields   => TORRENT_FIELDS
       )
   end

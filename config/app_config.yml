@@ -1,12 +1,20 @@
 development:
-  domain: localhost:3000
   downloads_path: "/Users/fguillen/Downloads"
-  torrent_api: http://localhost:9091/transmission/rpc
+  transmission_api_url: http://localhost:9091/transmission/rpc
+  transmission_auth:
+    username: "username"
+    password: "password"
 
 test:
-  domain: test.host
-  torrent_api: http://test.com/transmission/rpc
+  downloads_path: "/Users/fguillen/Downloads"
+  transmission_api_url: "http://api.url"
+  transmission_auth:
+    username: "username"
+    password: "password"
 
 production:
-  domain: example.com
-  torrent_api: http://localhost:9091/transmission/rpc
+  downloads_path: "/Users/fguillen/Downloads"
+  transmission_api_url: http://localhost:9091/transmission/rpc
+  transmission_auth:
+    username: "username"
+    password: "password"

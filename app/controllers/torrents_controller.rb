@@ -5,7 +5,7 @@ class TorrentsController < ApplicationController
   end
 
   def create
-    TransmissionApiWrapper.client.create(params[:torrent_uri])
+    TransmissionApiWrapper.client.create( params[:uri] )
     redirect_to torrents_path, :notice => "Successfully created torrent."
   end
 
@@ -16,7 +16,13 @@ class TorrentsController < ApplicationController
 
   def download
     filename = params[:filename]
-    path = "#{APP_CONFIG[:downloads_path]}/#{filename}"
+    path = "#{downloads_path}/#{filename}"
     send_file path
+  end
+
+  private
+
+  def downloads_path
+    APP_CONFIG[:downloads_path]
   end
 end
