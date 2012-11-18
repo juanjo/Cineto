@@ -13,7 +13,7 @@ test:
     password: "password"
 
 production:
-  downloads_path: "/Users/fguillen/Downloads"
+  downloads_path: "/home/fguillen/transmission/completed"
   transmission_api_url: http://localhost:9091/transmission/rpc
   transmission_auth:
     username: "trans"
