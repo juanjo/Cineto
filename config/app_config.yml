@@ -2,8 +2,8 @@ development:
   downloads_path: "/Users/fguillen/Downloads"
   transmission_api_url: http://localhost:9091/transmission/rpc
   transmission_auth:
-    username: "username"
-    password: "password"
+    username: "admin"
+    password: "1234"
 
 test:
   downloads_path: "/Users/fguillen/Downloads"

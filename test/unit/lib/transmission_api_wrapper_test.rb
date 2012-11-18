@@ -5,7 +5,7 @@ class TransmissionApiWrapperTest < ActiveSupport::TestCase
 
     TransmissionApi.expects(:new).with(
       :username => "username",
-      :password => "username",
+      :password => "password",
       :url      => "http://api.url",
       :fields   => TransmissionApiWrapper::TORRENT_FIELDS
     ).returns("client")

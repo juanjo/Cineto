@@ -17,7 +17,7 @@ module TransmissionApiWrapper
     @client ||=
       TransmissionApi.new(
         :username => APP_CONFIG[:transmission_auth]["username"],
-        :password => APP_CONFIG[:transmission_auth]["username"],
+        :password => APP_CONFIG[:transmission_auth]["password"],
         :url      => APP_CONFIG[:transmission_api_url],
         :fields   => TORRENT_FIELDS
       )
