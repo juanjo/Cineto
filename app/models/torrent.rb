@@ -1,6 +1,6 @@
 class Torrent < OpenStruct
   def self.parse_all( api_torrents )
-    api_torrents.map { |api_torrent| Torrent.parse( api_torrent ) }
+    api_torrents.map { |api_torrent| Torrent.parse( api_torrent ) }.reverse
   end
 
   def self.parse( api_torrent )

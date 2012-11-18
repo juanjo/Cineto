@@ -19,7 +19,8 @@ module TransmissionApiWrapper
         :username => APP_CONFIG[:transmission_auth]["username"],
         :password => APP_CONFIG[:transmission_auth]["password"],
         :url      => APP_CONFIG[:transmission_api_url],
-        :fields   => TORRENT_FIELDS
+        :fields   => TORRENT_FIELDS,
+        :debug_mode => true
       )
   end
 end
