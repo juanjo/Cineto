@@ -31,7 +31,7 @@ class Torrent < OpenStruct
   end
 
   def self.is_video?( file_name )
-    !!(file_name =~ /(avi|mp4|mkv|mov)$/)
+    !!(file_name =~ /(avi|mp4|mkv|mov|mp3)$/)
   end
 
 
