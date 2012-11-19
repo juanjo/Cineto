@@ -24,7 +24,7 @@
             <td><%= file.name %></td>
             <td><%= torrent_file_stats(file) %></td>
             <td>
-              <% if true #torrent_file_downloaded(file) %>
+              <% if torrent_file_downloaded(file) %>
 
                 <%= link_to "dowload", video_path( :path => "#{APP_CONFIG[:downloads_path]}/#{file.name}" ), :class => "btn btn-mini" %>
                 <% if file.is_video? %>
