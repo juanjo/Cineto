@@ -1,0 +1,17 @@
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= file.name %></h3>
+  </div>
+  <div class="modal-body">
+    <p>Did you order a video?...</p>
+    <video width="530" height="300" controls="controls">
+      <source src="<%= "#{APP_CONFIG[:downloads_url]}/#{file.name}" %>" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

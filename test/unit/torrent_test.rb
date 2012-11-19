@@ -25,4 +25,12 @@ class TorrentTest < ActiveSupport::TestCase
 
     assert_equal( 2, torrents.length )
   end
+
+  def test_is_video
+    assert_equal( true, Torrent.is_video?( "hola.avi" ) )
+    assert_equal( true, Torrent.is_video?( "hola.mp4" ) )
+    assert_equal( true, Torrent.is_video?( "hola.mkv" ) )
+    assert_equal( true, Torrent.is_video?( "hola.mov" ) )
+    assert_equal( false, Torrent.is_video?( "hola.wadus" ) )
+  end
 end

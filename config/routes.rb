@@ -6,4 +6,6 @@ Cineto::Application.routes.draw do
   resources :torrents, :only => [:index, :create, :destroy] do
     get :download, :on => :collection
   end
+
+  match "video" => "files#show"
 end

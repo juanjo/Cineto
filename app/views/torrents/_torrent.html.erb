@@ -25,7 +25,13 @@
             <td><%= torrent_file_stats(file) %></td>
             <td>
               <% if torrent_file_downloaded(file) %>
-                <%= link_to "dowload", download_torrents_path( :filename => file.name ), :class => "btn btn-mini" %>
+                <% if true #file.is_video? %>
+                  <a href="#myModal" role="button" class="btn" data-toggle="modal">play</a>
+                  <%= render :partial => "video_popup", :locals => { :file => file } %>
+                <% else %>
+                  <%= link_to "dowload", video_path( :path => "#{APP_CONFIG[:downloads_path]}/#{file.name}" ), :class => "btn btn-mini" %>
+                <% end %>
+
               <% else %>
                 <%= link_to "dowload", "#", :class => "btn btn-mini disabled", :disabled => "disabled" %>
               <% end %>

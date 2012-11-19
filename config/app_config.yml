@@ -1,5 +1,6 @@
 development:
   downloads_path: "/Users/fguillen/Downloads"
+  downloads_url: "http://downloads.com/files"
   transmission_api_url: http://localhost:9091/transmission/rpc
   transmission_auth:
     username: "admin"
@@ -7,6 +8,7 @@ development:
 
 test:
   downloads_path: "/Users/fguillen/Downloads"
+  downloads_url: "http://downloads.com/files"
   transmission_api_url: "http://api.url"
   transmission_auth:
     username: "username"
@@ -14,6 +16,7 @@ test:
 
 production:
   downloads_path: "/home/fguillen/transmission/completed"
+  downloads_url: "http://stream.cineto.fernandoguillen.info"
   transmission_api_url: http://localhost:9091/transmission/rpc
   transmission_auth:
     username: "trans"
