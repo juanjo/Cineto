@@ -5,7 +5,7 @@ class TorrentsController < ApplicationController
   end
 
   def create
-    if( params[:uri] =~ /^http:\/\/www.clearbits.net/ )
+    if true #( params[:uri] =~ /^http:\/\/www.clearbits.net/ )
       TransmissionApiWrapper.client.create( params[:uri] )
       redirect_to torrents_path, :notice => "Successfully created torrent."
     else
