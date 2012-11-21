@@ -13,3 +13,24 @@ body {
 .torrent .progress {
   margin-bottom: 0;
 }
+
+#search_input {
+  margin-bottom: -5px;
+}
+
+#results {
+  display:none;
+}
+
+#results ul {
+  margin: 0;
+  padding: 0;
+}
+
+#results ul li {
+  list-style: none;
+}
+
+#torrents {
+  margin-top: 10px;
+}

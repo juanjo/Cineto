@@ -7,6 +7,12 @@
     <%= javascript_include_tag "/assets/bootstrap/js/bootstrap.js" %>
     <%= csrf_meta_tag %>
 
+    <!-- BBSearch -->
+    <script src="/assets/bbsearch/vendor/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/bbsearch/vendor/underscore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/bbsearch/vendor/backbone.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/bbsearch/lib/bbsearch.js" type="text/javascript" charset="utf-8"></script>
+
     <%= stylesheet_link_tag "/assets/css/cineto.css" %>
     <%= yield(:head) %>
   </head>
@@ -29,5 +35,7 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+
+    <%= javascript_include_tag "/assets/js/cineto.js" %>
   </body>
 </html>
