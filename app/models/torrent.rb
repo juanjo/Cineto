@@ -25,9 +25,15 @@ class Torrent < OpenStruct
     OpenStruct.new(
       :bytes_completed => api_file["bytesCompleted"],
       :size => api_file["length"],
-      :name => api_file["name"]
+      :name => api_file["name"],
+      :is_video? => is_video?( api_file["name"] )
     )
   end
+
+  def self.is_video?( file_name )
+    !!(file_name =~ /(avi|mp4|mkv|mov|mp3)$/)
+  end
+
 
   def to_partial_path
     "torrent"

@@ -13,21 +13,33 @@
     <table class="table table-condensed">
       <thead>
         <tr>
-          <th class="span8">Filename</th>
+          <th class="span7">Filename</th>
           <th class="span3">State</th>
-          <th class="span1">Actions</th>
+          <th class="span2">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <% torrent.files.each do |file| %>
+        <% torrent.files.each_with_index do |file, index| %>
           <tr>
             <td><%= file.name %></td>
             <td><%= torrent_file_stats(file) %></td>
             <td>
               <% if torrent_file_downloaded(file) %>
-                <%= link_to "dowload", download_torrents_path( :filename => file.name ), :class => "btn btn-mini" %>
+
+                <%= link_to "dowload", video_path( :path => "#{APP_CONFIG[:downloads_path]}/#{file.name}" ), :class => "btn btn-mini" %>
+                <% if file.is_video? %>
+                  <%= link_to "play", "#video_popup_#{torrent.torrent_id}_#{index}", :role => "button", :"data-toggle" => "modal", :class => "btn btn-mini" %>
+                  <%= render :partial => "video_popup", :locals => { :file => file, :index => "#{torrent.torrent_id}_#{index}" } %>
+                <% end %>
+
               <% else %>
+
                 <%= link_to "dowload", "#", :class => "btn btn-mini disabled", :disabled => "disabled" %>
+                <% if file.is_video? %>
+                  <%= link_to "play", "#", :class => "btn btn-mini disabled", :disabled => "disabled" %>
+                <% end %>
+
+
               <% end %>
             </td>
           </tr>
